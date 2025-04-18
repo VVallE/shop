@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин чохлів</title>
+    <style>
+        body {margin: 0;}
+        header, footer{
+            padding: 16px;
+            background-color: rgb(124, 167, 233);
+            text-align: center;
+        }
+        main{margin-bottom: 100px;}
+        footer{
+            position: fixed;
+            box-sizing: border-box;
+            bottom: 0;
+            width: 100%;
+        }
+        .container{display: flex; padding: 0 250px 0 0;}
+        .products{
+            flex:1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 20px;
+            padding: 20px;
+        }
+        .card{
+            width: 400px;
+            border: 1px solid black;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .card img {
+            height: 300px;
+        }
+        #sidebar{
+            width: 250px;
+            background-color: cadetblue;
+            position: fixed;
+            right:-250px;
+            top: 0;
+            height: 100%;
+            transition: 1s;
+            padding: 20px;
+        }
+        #sidebar.show{right: 0;}
+        .close-btn{
+            cursor: pointer;
+            font-size: 18px;
+            color: white;
+            padding: 12px;
+            background-color: red;
+            width: 60px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .name{
+            font-size: 24px;
+        }
+        .price{
+            border: 4px double cadetblue;
+            padding: 20px 12px;
+            font-size: 20px;
+            color: rgb(124, 167, 233);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Привіт, тобі пора розчохлитися у нас!</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="products">
+                <div class="card" onclick="openSidebar(0)">
+                    <img src="https://www.stilgut.com/media/image/0e/bf/d7/tasche-iphone-4-us-nb-02.jpg" alt="">
+                    <p class="name">Чохол-книжка IPhone 3</p>
+                    <p class="price">300грн</p>
+                </div>
+                <div class="card" onclick="openSidebar(1)">
+                    <img src="https://content.rozetka.com.ua/goods/images/big/325547798.jpg" alt="">
+                    <p class="name">Софттач чохол Xiaomi 11A</p>
+                    <p class="price">375грн</p>
+                </div>
+                <div class="card" onclick="openSidebar(2)">
+                    <img src="https://content1.rozetka.com.ua/goods/images/big/482913652.jpg" alt="">
+                    <p class="name">Чохол Samsung Galaxy A55</p>
+                    <p class="price">450грн</p>
+                </div>
+            </div>
+            <div id="sidebar">
+                <span class="close-btn" onclick="closeSidebar()">Закрити</span>
+                <p id="sidebar-content"></p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <h3>Чохли на будь-які телефони та ноутбуки. 20 років на ринку.</h3>
+    </footer>
+    <script>
+        let products = [
+            'Чохол-книжка IPhone 3 чорного кольору',
+            'Софттач чохол Xiaomi 11A, оригінал',
+            'Cиліконовий  прозорий чохол Samsung Galaxy A55'
+        ]
+
+        function openSidebar(productNumber){
+            let sidebarContent = document.getElementById("sidebar-content");
+            sidebarContent.innerHTML = products[productNumber];
+            document.getElementById("sidebar").classList.add("show");
+        }
+
+        function closeSidebar(){
+            document.getElementById("sidebar").classList.remove("show");
+        }
+    </script>
+</body>
+</html>
